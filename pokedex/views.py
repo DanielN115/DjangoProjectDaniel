@@ -2,15 +2,64 @@ import urllib.request
 import json
 from http import HTTPStatus
 from urllib.error import HTTPError
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from rest_framework import viewsets
 from .serializers import *
-from .models import *
+from .models import Region,Pokemon,Entrenador
 
 # Create your views here.
+#def home_page_view(request):
+#    return HttpResponse("Hello, World")
 def home_page_view(request):
-    return HttpResponse("Hello, World")
+    return render(request,'home_page.html')
+
+
+def regiones_list_view(request):
+    regiones = Region.objects.all()
+    context = {
+        'regiones':regiones
+    }
+    return render(request,'region_list_page.html',context)
+
+def regiones_detail_view(request,id):
+    region = get_object_or_404(Region, pk=id)
+    pokemons = Pokemon.objects.filter(region=region)
+    context = {
+        'region': region,
+        'pokemons': pokemons
+    }
+    return render(request, 'region_detail_page.html', context)
+
+def entrenador_list_view(request):
+    entrenadores = Entrenador.objects.all()
+    context = {
+        'entrenadores':entrenadores
+    }
+    return render(request,'entrenador_list_page.html',context)
+
+def entrenador_detail_view(request,id):
+    entrenador = get_object_or_404(Entrenador, pk=id)
+    context = {
+        'entrenador': entrenador
+    }
+    return render(request, 'entrenador_detail_page.html', context)
+
+def pokemon_list_view(request):
+    pokemones = Pokemon.objects.all()
+    context = {
+        'pokemones':pokemones
+    }
+    return render(request,'pokemon_list_page.html',context)
+
+def pokemon_detail_view(request,id):
+    pokemon = get_object_or_404(Pokemon, pk=id)
+    context = {
+        'pokemon': pokemon
+    }
+    return render(request, 'pokemon_detail_page.html', context)
+
+
 
 def pokeapi_view(request):
     try:

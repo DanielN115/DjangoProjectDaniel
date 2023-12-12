@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Pokemon Page</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Pokemon Page</li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+  <h1 class="h1tittle">   Lista de Pokémon</h1>
+  <!-- Tercer item con lista de textos -->
+  <table border="1" class="tablebody">
+      <thead>
+          <tr>
+              <th>id</th>
+              <th>Nombre Pokémon</th>
+              <th>Tipo</th>
+              <th>Altura</th>
+              <th>Peso</th>
+              <th>Habilidad</th>
+              <th>Opciones</th>
+          </tr>
+      </thead>
+      <tbody>
+          {% for pokemon in pokemones %}
+              <tr>
+                  <td>{{ pokemon.id }}</td>
+                  <td>{{ pokemon.nombre }}</td>
+                  <td>{{ pokemon.tipo }}</td>
+                  <td>{{ pokemon.altura }} m</td>
+                  <td>{{ pokemon.peso }} kg</td>
+                  <td>{{ pokemon.habilidad }}</td>
+                  <td><a href="{% url 'Pokemon_Detail' id=pokemon.id %}" class="green-button">VER</a></td>
+              </tr>
+          {% endfor %}
+      </tbody>
+  </table>
+
+  <style>
+    .tablebody {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 20px;
+    }
+    .h1tittle {
+        margin-left:20px;
+        color: #333;
+    }
+    .tablebody {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+        margin 10px;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #4CAF50;
+        color: white;
+    }
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+    .green-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #FCAF50;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        text-align: center;
+    }
+  </style>
+{% endblock %}

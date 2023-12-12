@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Home Page Django</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Home Page</li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+<div class="allbody">
+    <div class="container">
+        <h2>Funciones</h2>
+        <div class="item-container">
+                <div class="item">
+                    <img src="{% static "media/home_page/regiones.webp" %}" alt="Imagen 1" width="100" height="100">
+                    <a href="#" class="green-button">Regiones</a>
+                </div>
+                <div class="item">
+                    <img src="{% static "media/home_page/entrenador.webp" %}" alt="Imagen 2" width="100" height="100">
+                    <a href="#" class="green-button">Entrenadores</a>
+                </div>
+                <div class="item">
+                    <img src="{% static "media/home_page/pokemons.webp" %}" alt="Imagen 3" width="100" height="100">
+                    <a href="#" class="green-button">Pokemones</a>
+                </div>
+                <div class="item">
+                    <img src="{% static "media/pokedex-image.png" %}" alt="Imagen 4" width="100" height="100">
+                    <a href="#" class="green-button">PokeApi</a>
+                </div>
+                
+
+            <!-- Agrega más elementos según sea necesario -->
+        </div>
+    </div>
+</div>
+
+<style>
+    .allbody {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+
+    .container {
+        margin: 25px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        height:500px;
+    }
+
+    .item-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 25px;
+    }
+
+    .item {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .item img {
+        border-radius: 50%;
+        max-width: 400%%;
+        height: 300%%;
+        margin-bottom: 10px;
+    }
+    .green-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+</style>
+  
+{% endblock %}

@@ -3,3 +3,4 @@ daniel-env/
 .venv
 __pycache__/
 db.sqlite3
+AdminLTE-3.2.0/

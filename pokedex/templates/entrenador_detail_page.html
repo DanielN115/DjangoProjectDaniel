@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Entrenador {{entrenador.nombre}}</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Entrenador {{entrenador.nombre}}</li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+
+  <div class="item">
+    <img src="{{entrenador.imagen.url}}" alt="Imagen" style="max-width: 200px; max-height: 300px;">
+    <br>
+    <p>Nombre: {{entrenador.nombre}}</p>
+    <p>Edad: {{entrenador.edad}}</p>
+  </div>
+
+  <style>
+  .item {
+      float: left;
+      width: 30%; /* Para dejar un pequeño espacio entre los elementos */
+      margin-right: 2%; /* Espacio entre elementos */
+      margin-bottom: 20px;
+      background-color: #4CAF50;
+      padding: 10px;
+      text-align: center;
+      border-radius:10%
+  }
+  .item p{
+      margin: 5px 0; /* Ajusta el margen según tus preferencias */
+      font-size: 32px; /* Ajusta el tamaño de fuente según tus preferencias */
+  }
+  .item img {
+      max-width: 100%;
+      height: auto;
+  }
+  
+  </style>
+{% endblock %}

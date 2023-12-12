@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Region {{region.nombre}}</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Region {{region.nombre}}</li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+  <div class="allbody">
+    <!-- Primer item con imagen y texto -->
+    <div class="item">
+        <img src="{{region.mapa.url}}" alt="Imagen 1" style="max-width: 500px; max-height: 400pxpx;">
+        <br>
+        <p>Region: {{region.nombre}}</p>
+        <p>Pueblo inicial: {{region.pueblo_inicial}}</p>
+    </div>
+
+    <!-- Segundo item con imagen y texto -->
+    <div class="item">
+        <img src="{{region.lider_liga.imagen.url}}" alt="Imagen 2" style="max-width: 200px; max-height: 300px;">
+        <br>
+        <p>Nombre: <a href="{% url 'Entrenador_Detail' id=region.lider_liga.id %}">{{region.lider_liga.nombre}}</a></p>
+        <p>Edad: {{region.lider_liga.edad}}</p>
+    </div>
+
+    <div class="clear"></div>
+
+    <h1 class="h1tittle">Lista de Pokémon en la región de {{region.nombre}}</h1>
+    <!-- Tercer item con lista de textos -->
+    <table border="1" class="tablebody">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Nombre Pokémon</th>
+                <th>Tipo</th>
+                <th>Altura</th>
+                <th>Peso</th>
+                <th>Habilidad</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pokemon in pokemons %}
+                <tr>
+                    <td>{{ pokemon.id }}</td>
+                    <td>{{ pokemon.nombre }}</td>
+                    <td>{{ pokemon.tipo }}</td>
+                    <td>{{ pokemon.altura }} m</td>
+                    <td>{{ pokemon.peso }} kg</td>
+                    <td>{{ pokemon.habilidad }}</td>
+                    <td><a href="{% url 'Pokemon_Detail' id=pokemon.id %}" class="green-button">VER</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+  <style>
+    .allbody {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+    .item {
+        float: left;
+        width: 48%; /* Para dejar un pequeño espacio entre los elementos */
+        margin-right: 2%; /* Espacio entre elementos */
+        margin-bottom: 20px;
+        background-color: #4CAF50;
+        padding: 10px;
+        text-align: center;
+        border-radius:10%
+    }
+    .item p{
+        margin: 5px 0; /* Ajusta el margen según tus preferencias */
+        font-size: 32px; /* Ajusta el tamaño de fuente según tus preferencias */
+    }
+    .item img {
+        max-width: 100%;
+        height: auto;
+    }
+    .clear {
+        clear: both;
+    }
+    .tablebody {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 20px;
+    }
+    .h1tittle {
+        color: #333;
+    }
+    .tablebody {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+        margin 10px;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #4CAF50;
+        color: white;
+    }
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+    .green-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #FCAF50;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        text-align: center;
+    }
+
+</style>
+{% endblock %}

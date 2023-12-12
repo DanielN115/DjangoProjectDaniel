@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Pokemon Page</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Pokemon Page</li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+
+  <div class="item">
+    <p>id: {{pokemon.id}}</p>
+    <p>Nombre Pokémon: {{pokemon.nombre}}</p>
+    <p>Tipo: {{pokemon.tipo}}</p>
+    <p>Altura: {{pokemon.altura}}</p>
+    <p>Peso: {{pokemon.peso}}</p>
+    <p>Habilidad: {{pokemon.habilidad}}</p>
+    <p>Region: <a href="{% url 'Region_Detail' id=pokemon.region.id %}">{{pokemon.region.nombre}}</a></p>
+  </div>
+
+  <style>
+  .item {
+      float: left;
+      width: 30%; /* Para dejar un pequeño espacio entre los elementos */
+      margin-right: 2%; /* Espacio entre elementos */
+      margin-bottom: 20px;
+      background-color: #4CAF50;
+      padding: 10px;
+      text-align: center;
+      border-radius:10%
+  }
+  .item p{
+      margin: 5px 0; /* Ajusta el margen según tus preferencias */
+      font-size: 32px; /* Ajusta el tamaño de fuente según tus preferencias */
+  }
+  
+  </style>
+
+{% endblock %}
